@@ -1,113 +1,83 @@
-import Image from "next/image";
+import {DarbaAlgasKalkulators} from "@/app/ui/darbaAlgasKalkulators";
+import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
+import React from "react";
+import Link from "next/link";
 
-export default function Home() {
+
+export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div>
+      <DarbaAlgasKalkulators/>
+      <Accordion type="single" collapsible className={"pt-10 pb-14"}>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Kā tiek aprēķināts iedzīvotāju ienākuma nodoklis?</AccordionTrigger>
+          <AccordionContent>
+            <p>Izmaksājot darba algu, tiek piemērota IIN progresīvā likme. Tas nozīmē, ka nodokļa maksātājam nodokļa
+              likme ir piemērota atbilstoši viņa gūtajiem ienākumiem.</p>
+            <p>Nodokļa likmes apmērs 2024:</p>
+            <ul>
+              <li>Iedzīvotāju ienākumu nodokļa likme algai gadā līdz EUR 20 004 – 20%</li>
+              <li>Iedzīvotāju ienākumu nodokļa likme algai gadā līdz EUR 20 004,01 – 23%</li>
+              <li>Valsts sociālās apdrošināšanas obligātās iemaksas likme 10,5%</li>
+              <li>Atvieglojums par apgādībā esošām personām EUR 250</li>
+              <li>Neapliekamais minimums EUR 0-500</li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Cik ilgi glabājās saglabātie aprēķini?</AccordionTrigger>
+          <AccordionContent>
+            Tie tiek glabāti jūsu pārlūkprogrammā līdz bridim, kad tos pats izdzēsīsiet.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Vai kāds varēs apskatītes manus datus?</AccordionTrigger>
+          <AccordionContent>
+            Nē, tie glabājas tikai un vienīgi pie jums.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-4">
+          <AccordionTrigger>Ar algas aprēķiniem saistītie termini</AccordionTrigger>
+          <AccordionContent>
+            <p>Lai labāk rīkotos ar algu kalkulatoru un izprastu visu, ar darba algas samaksu saistīto ir daži galvenie
+              termini, kas Jums būtu jāpārzina. Apskatīsim tos tuvāk.</p>
+            <p><strong>Bruto alga</strong> – Bruto atalgojums ir naudas summa, ko darbinieks regulāri saņem no uzņēmuma,
+              pirms tiek veikti jebkādi atskaitījumi, piemēram nodokļi. Kad tiek izsludināts darba piedāvājums, norādītā
+              alga parasti tiek attēlota kā bruto alga, tāpēc tā tiek dēvēta arī kā alga “uz papīra”.</p>
+            <p><strong>Neto alga</strong> – Neto alga ir Jūsu kopējā atalgojuma summa pēc visu nodokļu un citu
+              darbinieku iemaksu atskaitīšanas jeb tas, ko darbinieks saņem “uz rokas”. Šī ir Jūsu bankas kontā
+              iemaksātā naudas summa, ko var izmantot pēc saviem ieskatiem. Algas kalkulators ļauj aprēķināt, kāda ir
+              neto alga, ja ir zināma bruto alga.</p>
+            <p><strong>Minimālā darba alga</strong> – Katrā valstī tā var atšķirties un tā var mainīties arī pa gadiem.
+              Latvijā, minimālā darba alga 2024. gadā ir EUR 700 mēnesī.</p>
+            <p><strong>Neapliekamais minimums</strong> – Neapliekamo minimumu piemēro Jūsu ienākumiem, pirms tiem ir
+              uzlikts iedzīvotāja ienākuma nodoklis jeb IIN. Gada laikā prognozēto neapliekamo minimumu parasti piemēro
+              darba devējs, jeb darba vieta, kuru savā algas nodokļu grāmatiņā esat norādījis kā galveno ienākumu
+              gūšanas vietu. Taču VID gada ienākumu deklarācijā, kuru visi parasti iesniedz marta sākumā, par visu
+              kalendāra gadu piemēro gada diferenciēto neapliekamo minimumu. Tas nozīmē, ka tiek pārrēķināts jau gada
+              laikā piemērotais un prognozētais neapliekamais minimums.</p>
+            <p>2024. gadā diferencētā neapliekamā minimuma aprēķināšanai ir noteikti šādi lielumi:</p>
+            <ul>
+              <li>Maksimālais neapliekamais minimums – € 6000 gadā;</li>
+              <li>Apliekamā ienākuma apmērs, līdz kuram piemēro maksimālo neapliekamo minimumu, – € 6000 gadā;</li>
+              <li>Apliekamā ienākuma apmērs, virs kura nepiemēro diferencēto neapliekamo minimumu, – € 21 600 gadā;</li>
+              <li>Koeficients – 0,38462.</li>
+            </ul>
+            <p>Personai, kurai izmaksā pensiju, piemēro pensionāra neapliekamo minimumu. Pensionāra neapliekamo minimumu
+              gada laikā piemēro pensijas izmaksātājs. Pensionāra neapliekamais minimums pēc 2023. gada ir € 6000 (€ 500
+              mēnesī).</p>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value={"item-5"}>
+          <AccordionTrigger>Kas ir VSAOI?</AccordionTrigger>
+          <AccordionContent>
+            Vairāk par Valsts Sociālās Apdrošināšanas Obligātajām Iemaksām iespējams uzzināt Valsts Ieņēmuma dienesta mājaslapā.{" "}
+            <Link href={"https://www.vid.gov.lv/lv/valsts-socialas-apdrosinasanas-obligatas-iemaksas"} className={"underline"}>VSAOI</Link>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+  )
 }
